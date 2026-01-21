@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Eternal Threads</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Eternal Threads</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-18-1-2026">18-1-2026</a> 1:44:25</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-18-1-2026">18-1-2026</a> 1:45:23</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-19-5-2022">19-5-2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-63">63</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-63">63</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Puzzle">Puzzle</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Cosmonaut Studios">Cosmonaut Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Secret Mode">Secret Mode</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1046790/Eternal_Threads" target="_blank">Steam</a><br/><a href="https://www.cosmonautstudios.co.uk/" target="_blank">Official Website</a><br/><a href="https://www.youtube.com/channel/UCuBz90m6VYbtGR119s0VDNA" target="_blank">YouTube</a><br/><a href="https://twitter.com/cosmonaut_info" target="_blank">Twitter</a><br/><a href="https://www.facebook.com/CosmonautStudiosGames" target="_blank">Facebook</a><br/><a href="https://www.instagram.com/cosmonaut_studios" target="_blank">Instagram</a><br/><a href="https://store.epicgames.com/en-US/p/eternal-threads-197169" target="_blank">Epic</a><br/><a href="https://www.nintendo.com/us/store/products/eternal-threads-switch/" target="_blank">Nintendo</a><br/><a href="https://store.playstation.com/en-us/concept/10004064" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					Eternal Threads is een singleplayer, verhaalgedreven puzzelgame in firstperson over tijdmanipulatie, keuzes en gevolgen.<br><br>Je bent een medewerker belast met het oplossen van problemen met de tijdstroom en wordt naar het noorden van Engeland gestuurd in mei 2015 waar zes mensen overleden in een woningbrand. Het is je verboden om de brand simpelweg te voorkomen. In plaats daarvan moet je de keuzes die de huisgenoten maken in de week voor de brand zodanig beïnvloeden dat ze allemaal de brand overleven.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1046790/extras/ab72345cd7eeb5ac01282c36f4367c0f.poster.avif?t=1767691949"></span><br><br>Je hebt direct vrij spel en volledige controle om de tijdlijn van zeven dagen voor de brand te verkennen. Je kunt belangrijke gebeurtenissen in die hele week zo vaak als je wilt en in welke volgorde dan ook bekijken en veranderen. Sommige beslissingen hebben slechts kleine gevolgen voor de tijdlijn, zoals objecten verplaatsen in het huis of achtergrondverhalen en geheimen blootleggen. Maar met grote veranderingen herschrijf je de tijdlijn door bestaande gebeurtenissen te veranderen, nieuwe gebeurtenissen toe te voegen en zelfs hele gebeurtenissen te vervangen.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1046790/extras/8c79df91f85da8f8eb0614f33ca6baa9.poster.avif?t=1767691949"></span><br><br>Je moet langs de hele tijdlijn op en neer reizen, beslissingen op verschillende momenten gedurende de week veranderen, zodat de gevolgen ervan elkaar beïnvloeden en alle zes huisgenoten de brand overleven.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1046790/extras/d8be31bf49e101c0d70caf238f54ca89.poster.avif?t=1767691949"></span><br><br>Maar het zijn niet alleen de huisgenoten die keuzes hebben. Zoek je gewoon de snelste en makkelijkste oplossing, of kun je de best mogelijke uitkomst voor iedereen vinden?<br><br>Uiteindelijk draait alles om keuzes en gevolgen.<h2 class="bb_tag">Kenmerken</h2><h2 class="bb_tag">Kies hoe je het verhaal van de game wilt volgen.</h2><br>Het volledige verhaal volgt de zes hoofdpersonen tijdens verschillende beslissingen in verschillende tijdlijnen en je kunt ze ervaren hoe je maar wilt. <br><br>Je kunt op het verhaal van één specifiek personage concentreren en de keuzes in die tijdlijn volgen om daarna terug naar het begin te gaan en een ander personage te volgen. <br><br>Je kunt het verhaal benaderen als een forensisch detective, de uiteindelijke uitkomst van het verhaal observeren en dan je een weg terug naar het begin van de tijdlijn zoeken waarbij je in feite de gevolgen observeert en dan de oorzaak vaststelt.<br><br>Of je kunt gewoon dingen in chronologische volgorde bekijken en de tijdlijn voor je zien ontvouwen terwijl je alles observeert en beslissingen van de personages verandert terwijl de week vordert.<h2 class="bb_tag">Bekijk en verander dingen zo vaak als je wilt.</h2><br>Kun je je niet precies herinneren wat er zich afspeelde tijdens een gebeurtenis? Heb je een beslissing veranderd maar ben je niet tevreden over de gevolgen? Geen probleem. Ga gewoon terug in de tijdlijn en bekijk en verander wat je maar wilt, wanneer je maar wilt, zo vaak je maar wilt.<h2 class="bb_tag">Verander het verleden om de toekomst te beïnvloeden</h2><br>Door tijdelijk een basis in het huis op te zetten in de uren na de brand, krijg je een uniek perspectief op de gebeurtenissen. Deze spelen zich voor je af in spookachtige gestalten terwijl je terugkijkt in de tijdlijn met het door rook en vuur beschadigde huis als een constante herinnering aan wat er komen gaat. Daarnaast kan de omgeving waarin je je bevindt worden gereset als je het verleden manipuleert zodat deze overeenkomt met de veranderingen die plaatsvinden. Er verschijnen nieuwe objecten, andere worden verplaatst in het huis en de inrichting van kamers kan aanzienlijk veranderen terwijl je het verleden manipuleert.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

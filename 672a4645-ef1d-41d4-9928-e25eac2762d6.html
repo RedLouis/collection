@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Heroes of Might and Magic: Olden Era Demo</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Heroes of Might and Magic: Olden Era Demo</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-7-11-2025">7-11-2025</a> 19:48:39</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-7-11-2025">7-11-2025</a> 19:59:02</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-"></a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph">This newest entry in the renowned Heroes of Might and Magic series brings strategic empire building, epic turn-based tactical battles, and in-depth RPG mechanics to a world of fantastical beasts, formidable spellcasters, and fierce champions. Explore a vibrant world full of secrets and dangers, build magnificent cities and raise massive armies of mythical creatures to vanquish your foes.</p><p class="bb_paragraph"></p><p class="bb_paragraph">Made for series veterans and newcomers alike, Heroes of Might and Magic: Olden Era is built on the familiar foundations of some of the most critically acclaimed strategy games of all time, introducing multiple classic and new game modes to enjoy.</p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3241970/extras/d257606d8abe3c10747abef321c96933.poster.avif?t=1762499334"></span></p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3241970/extras/4d9d5c983be726a81ab30812e6ad36fd.avif?t=1762499334"></span></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3241970/extras/66483f726faa41811bcc4301bd9edd9f.avif?t=1762499334"></span></p><p class="bb_paragraph">Choose from multiple powerful factions to lead in a fantastical world where stalwart heroes command armies of mighty warriors and magical creatures in battle. From the armored knights of the Temple and the animated corpses of the Necropolis, to the fire-breathing dragons of the Dungeon and the eldritch abominations of Schism, each of the factions wields its own unique selection of units and heroes on the battlefield.</p><ul class="bb_ul"><li><p class="bb_paragraph">Each faction in Olden Era has a great variety of unique units with which to forge your own playstyle and match your tactical preferences. Will you choose to lead armies of deadly but fragile vampires and liches, able to sap the enemy’s strength with every strike and drain life to raise fallen warriors? Or do you prefer more robust combatants like the noble griffins and their ability to counterattack multiple times, or honorable knights that lead devastating charges?  Use varied active and passive abilities to teleport troops further than their movement range would typically allow, summon additional forces to the field, hamper your opponent’s ability to cast spells or use abilities of their own, or otherwise turn the tide of battle. </p></li><li><p class="bb_paragraph">Build the appropriate structures in your cities to recruit and upgrade your units into more formidable variants, or seek out dwellings across the world map to bring creatures from other factions into your armies, unlocking new opportunities and synergies to overcome your foes. </p></li><li><p class="bb_paragraph">Recruit powerful heroes to lead your armies, each exerting their own effects on your empire and its warriors as they grow more experienced over time. Where one might help their army move more quickly across the world, another may increase the initiative of all units within their army, favour the recruitment of a particular unit, or generate essential resources to bolster your economy. With over a hundred unique heroes each bringing their own starting armies, skills, and spells with them in the full game, there is a great variety of strategies to employ.</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3241970/extras/4e9f0f209634c7b94175bce71796b3a1.avif?t=1762499334"></span></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3241970/extras/654a95d6dd6f810137278b6ebb7c629c.poster.avif?t=1762499334"></span></p><p class="bb_paragraph">Whether fighting for supremacy on procedurally generated worlds or playing on handcrafted maps built by the developers or community members on the in-game map editor, Heroes of Might and Magic will always take you to an unknown world awaiting exploration. Send forth your armies to pull back the veil and reveal great opportunities and dark threats, racing against your enemies to capture points of interest and secure the foundations of a strong economy. Navigate the treacherous terrain and varied biomes as you do, and seek out the mountain passes, chokepoints, and alternate pathways guarded by fearsome creatures and deadly armies.</p><ul class="bb_ul"><li><p class="bb_paragraph">Start with a single town where you can construct buildings, recruit and upgrade units, and hire additional heroes. Then venture forth and seek out structures in the world beyond that can generate vital resources, provide you with arcane power, or aid in your defense. With limited movement points per turn, every fork in the road becomes a strategic decision – will you rush to a well and replenish a hero’s mana, betting that the enemy lies in wait just beyond what your eyes can see? Or perhaps the glittering of a treasure hoard and its offer of great reward is more pressing? </p></li><li><p class="bb_paragraph">Valuable landmarks will often be guarded by powerful armies, and the first to overcome this force will reap rewards that can hold the secret to success. With valuable artifacts ranging from weapons and armour to magical rings and trinkets, heroes carrying the right equipment can strengthen what first appears to be a weak army, or otherwise unlock surprising combinations and synergies.</p></li><li><p class="bb_paragraph">Capture additional towns to gain access to reinforcements closer to the ever-shifting frontlines of war, and secure your grip with garrisons stationed at their walls. Develop each town in different ways to gain access to the specific needs of a certain front as you face off against your enemies.</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3241970/extras/fc2e2a262928059315089bfd1383e6e4.avif?t=1762499334"></span></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3241970/extras/a045f8a07c2be366572c38162b74c1b5.poster.avif?t=1762499334"></span></p><p class="bb_paragraph">The battlefields of Olden Era put warriors and spellcasters to the test as humble footsoldiers stand shoulder-to-shoulder with and against hydras and phoenixes and minotaurs and more. Powerful magic courses overhead as heroes conjure the arcane to strike enemies down or reinvigorate allies, drawing from four different schools of magic to turn the tide of battle.</p><ul class="bb_ul"><li><p class="bb_paragraph">Turn-based tactical battles will test your strategic mastery as you seek out devastating synergies among the large variety of units at your disposal, the heroes that lead them, and the spells and artifacts they wield. The right combination can make even the lowly skeleton warrior a formidable opponent, and a shrewd tactician can find advantages in surprising ways. The battlefields of Olden Era encourage smart but aggressive play – ranged units are able to fire across the field, distances close quickly, and spells can strike from anywhere.</p></li><li><p class="bb_paragraph">Earn Focus by causing and receiving damage, and spend it to use powerful and unique units abilities, unlocking options that range from more devastating attacks and increased defenses to higher initiative and mobility. From the Graverobber’s ability to summon Skeletons to the Locust’s ability to jump to a nearby corpse and devour it for buffs, each unit provides a litany of interesting options in combat. Will you spend this precious resource to heal weakened units with the help of your Hierophant, keeping them on the battlefield for just a few more crucial turns? Or perhaps your Arbitrator can teleport a powerful allied unit forward, surprising your opponent where they previously felt safe, shifting the tides quickly in your favor? Every decision you make is critical, and if the odds are overwhelming, you can always pay the price to flee the battlefield and fight another day.</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph">In the Heroes of Might and Magic: Olden Era Demo, you’ll get to play and enjoy the following aspects of the game:</p><ul class="bb_ul"><li><p class="bb_paragraph">A series of tutorials with a wide range of challenges to teach you about the game</p></li></ul><ul class="bb_ul"><li><p class="bb_paragraph">Quick start mode</p></li></ul><ul class="bb_ul"><li><p class="bb_paragraph">4 factions (Temple, Necropolis, Dungeon, and Schism)</p></li></ul><ul class="bb_ul"><li><p class="bb_paragraph">Three modes — arena, single-hero, multi-hero (Classic)</p></li></ul><ul class="bb_ul"><li><p class="bb_paragraph">Three templates for single-hero and multi-hero (Classic) modes</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph">The world of Enroth and its mystical continent of Jadame await you! Will you be its savior or its corruptor?</p><p class="bb_paragraph" style="text-align: center"></p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
