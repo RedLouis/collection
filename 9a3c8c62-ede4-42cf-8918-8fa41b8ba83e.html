@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Garden Paws</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Garden Paws</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>2h 47m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-3-4-2020">3-4-2020</a> 16:34:53</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-7-11-2025">7-11-2025</a> 19:48:39</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-23-12-2025">23-12-2025</a> 22:21:31</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-18-12-2018">18-12-2018</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-70">70</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Bitten Toast Games">Bitten Toast Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Bitten Toast Games">Bitten Toast Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/840010" target="_blank">Steam</a><br/><a href="http://www.gardenpawsgame.com" target="_blank">Official Website</a><br/><a href="https://facebook.com/GardenPawsTheGame" target="_blank">Facebook</a><br/><a href="https://reddit.com/r/gardenpaws" target="_blank">Subreddit</a><br/><a href="https://www.twitch.tv/directory/game/Garden%20Paws" target="_blank">Twitch</a><br/><a href="https://www.nintendo.com/games/detail/garden-paws-switch/" target="_blank">Nintendo</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/840010/extras/b3ff010984a534b9e99ba65efc807e0a.avif?t=1697331980"></span><br><br>You have inherited your grandparents farm as they set off to travel the world. Work with Frank at the local construction shop to finish off the final touches on your new home. Aid Frank and Mayor Wilson in building up the town so it may reach it's full potential.<br><br>In order to expand your home, and build up the nearby town, you're going to need coins. What better way to earn those coins then by running a shop! Explore the islands and caves collecting everything from poop to flowers to sell to the local villagers. Once you have some seeds you can dive into Farming, or many of the other activities on the islands including, Crafting, Fishing, Mining and Questing. <br><br>Once you have some spare coin talk to Frank to commission new buildings in town, with each building bringing unique Upgrades, Shops, Quests and even New Areas to explore, you'll have plenty to keep you busy!<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/840010/extras/6ce943702b5da01c81d9c226bcbc27fc.poster.avif?t=1697331980"></span><br><br>With each area that you explore there are new items to find, collect, sell and even wear. Around every corner there is a chance to find hidden treasure, so you'll want to explore every chance you get. <br><br>Once the mining camp is built, commission the miners to clear up the rubble and open new mining caves. Don't worry, there won't be any spirits to battle here, only geodes and other treasures to find.<br><br>Want to explore even more? Take a boat ride over to Halloween Island during Fall to grab some epic loot.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/840010/extras/fc2b15255bfe664576c6ab317f123947.poster.avif?t=1697331980"></span><br><br>Dive into the dungeon and battle monsters on 10 epic levels, take on the boss if you dare.<br><br>Find it too easy? Shoot the mushrooms in the entrance from smallest to largest to activate hardcore mode.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/840010/extras/0f8740a1ebf4590d9808e1636f3d962a.poster.avif?t=1697331980"></span><br><br>You don't have to go alone on this new adventure, invite up to three friends to join you online. From shopkeeping to taming and exploring, everything is better with friends.<br><br>Looking to play with even more people? Create a Creative lobby and have up to 32 people building and hanging out!<br><br>As the server host you can open your home to friends that will fully be able to interact in your world. Host a public or private server to play with old friends or make new ones. <br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/840010/extras/979fcb6b7a0d8549e9636dd6b1d3f85b.poster.avif?t=1697331980"></span><br><br>There are currently 10 characters to choose from, the Fox, Bunny, Bear, Dragon, Cat, Bird, Badger, Chipmunk, Horse and Dog. Each character has a unique appearance and for all the characters there are over 400 skins to customize your character unique to you.<br><br>Clothing items and more unique skins can be found in chests, by questing or you can purchase them from Splash in town. There are also 150+ dye-able clothing items, to personalize your character even further from wings to bucket hats.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/840010/extras/5646c8abbd6009650f7f43d85e6ff3a2.poster.avif?t=1697331980"></span><br><br>Found a flower or rock you think your customers will love? Open your shop between 12:00 and 18:00 and watch the money roll in. <br><br>Upgrade your shop from a small single table stand to a large extravagant showstopper. Personalize your shop with mannequins to show off your accessories and hats for sale. There are 1000+ items to sell in your shop, from raw materials to crafted items.<br><br>If you want to explore instead of tending to the shop, hire an assistant to take over for you.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/840010/extras/36fb7855e945f70df108fc44f1e45315.poster.avif?t=1697331980"></span><br><br>Are you a streamer that wants to interact with your chat on a new level? Simply enable Twitch Integration and the viewers active in your chat will have a chance to appear as a customer in your game.<br><br>Viewers can even type "hype" or "love" in your game, (if you let them), to interact with your game. Take it even further and toggle emotes or chat to appear in your game, also explore the Inn or Townhall to see which of your viewers are hanging out in your game.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/840010/extras/3a5a651d2d695fb4d57f01d34803ab48.poster.avif?t=1697331980"></span><br><br>Don't go too far, the townsfolk will need your help rebuilding their town, especially when a natural disaster strikes. Help build up the town and local buildings introducing new quests, areas and items along the way. There are over 700 quests with a minimum of 30 hours of content to explore, don't worry if you finish all the quests there are new ones every season.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/840010/extras/016b4277726f721759487e43011a18cf.poster.avif?t=1697331980"></span><br><br>Dig up seeds with flowers and vegetables in the wild or talk to Sammy the Seed Seller to purchase new seeds. Use your hoe to till the soil, then make sure to water it every day until your crops are ready to harvest. After a couple of days, harvest your crops and then cook them up or wrap them in a bouquet to sell in your shop.<br><br>Keep an eye out for those lovely rainy days, or craft some sprinklers so you can spend your time doing other tasks without worrying about your crops withering away.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/840010/extras/519b56c8b975c7fffc6130d0ba056f44.poster.avif?t=1697331980"></span><br><br>There is water everywhere! So it's no surprise that the villagers on these islands like to fish. Whether it's dawn or dusk there is a large variety of fish to catch.<br><br>Don't want to spend your time fishing, set up some fish or shellfish traps and let them do the work.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/840010/extras/4b13b051e1c610525726ecac531b4209.poster.avif?t=1697331980"></span><br><br>What farm is complete without animals? Talk to Frank about building your first Chicken Coop and Barn. In Garden Paws you can raise and tend to many animals including Chicks, Ducks, Calves, Alpacas, Foxes, Ferrets, Goats, Sheep, Horses, Rabbits and more. All of your larger mature animals can also be mounts to help you get around faster if you want a break from gliding around.<br><br>Learn how to befriend the animals with their favourite foods, we hear rabbits love carrots. Keep your eye out for the legendary creatures.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/840010/extras/0a988e790f9a5e19698573c6a45444ec.poster.avif?t=1697331980"></span><br><br>Tired of selling boring sticks and stones? Use your crafting skills to create works of art fit for a king. Make sure to upgrade your tools and equipment to unlock new recipes and blueprints.<br><br>There are over 600 crafting recipes, including various chests, furniture and building pieces. You can keep your farm classic with wooden decorations or glam it up with crystal furniture and glass walls. Your Farm, your style! There are over 60 wallpapers and hundreds of items to keep you building all night.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/840010/extras/ac86276107478e3e7d2c6713baa56451.poster.avif?t=1697331980"></span><br><br>There are multiple cooking stations to make your favorite treats, whether it's grilled fish, pies or salads you can take your shop to the next level by selling your delicious dishes.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/840010/extras/e31d1be60cf1ca972062d6cd5571cc5d.poster.avif?t=1697331980"></span><br><br>Work with Frank at the local construction shop to upgrade the home your grandparents left you, when they set off to travel the world. Want something bigger or in another location? Build some foundations and walls to build anything from a small fishing shack to a large castle!<br><br>Once you've built your house you can customize it further with paintbrushes ranging from your classic colors to galaxy walls and floors.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/840010/extras/9b3dd18b13df67ba55efbe35d5c86214.poster.avif?t=1697331980"></span><br><br>In Garden Paws you'll have the opportunity to commission new buildings, bringing in new townsfolk and seeing the town grow due to your efforts.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
