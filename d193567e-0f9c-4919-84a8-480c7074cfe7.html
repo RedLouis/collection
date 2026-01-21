@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Scars Above</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Scars Above</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-7-11-2025">7-11-2025</a> 19:48:39</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-23-12-2025">23-12-2025</a> 22:21:31</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-28-2-2023">28-2-2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-59">59</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Shooter">Shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Mad Head Games">Mad Head Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Prime Matter">Prime Matter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1196090/Scars_Above" target="_blank">Steam</a><br/><a href="https://twitter.com/ScarsAbove" target="_blank">Twitter</a><br/><a href="https://www.twitch.tv/directory/game/Scars%20Above" target="_blank">Twitch</a><br/><a href="https://www.gog.com/en/game/scars_above" target="_blank">GOG</a><br/><a href="https://store.playstation.com/en-us/concept/10005258" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					Scars Above is een uitdagende third-person action-adventure shooter met een meeslepend en complex sciencefictionverhaal dat zich afspeelt in een mysterieuze buitenaardse wereld. Verken deze wereld, red je uit moeilijke situaties en ervaar de voldoening die dit geeft.<br><br><strong>Sommige dingen horen niet ontdekt te worden&nbsp;...</strong><br><br>De wereld is geschokt nadat er plotseling een kolossale en mysterieuze buitenaardse structuur in de baan van de aarde is verschenen; de mensen noemen het ‘De Metahedron’. Het Sentient Contact Assessment and Response (SCAR)-team – dat bestaat uit wetenschappers en ingenieurs – wordt op pad gestuurd om de structuur te onderzoeken. <br><br>Het onderzoek verloopt niet volgens plan en de Metahedron schiet het team de ruimte door naar een geheimzinnige exoplaneet. Jij bent dr. Kate Ward, een lid van het SCAR-team en ontwaakt verdwaasd, helemaal alleen in een vreemde en vijandige omgeving. Vastbesloten om te overleven, ga je op pad om je teamleden te vinden en te ontdekken wat er precies is gebeurd.<h2 class="bb_tag">OVERLEVEN TEGEN ALLE VERWACHTINGEN IN </h2>Kate is een astronaut en wetenschapper, geen soldaat, maar ze is vindingrijk en vastbesloten tot het uiterste te gaan om te overleven.<br>Gebruik een combinatie van afstandswapens, hulpmiddelen, verbruiksgoederen en contactaanvallen. Hou je uithoudingsvermogen in de gaten terwijl je rent, bukt, gebruikmaakt van zwakke punten en effectieve tactieken ontdekt om je vijanden te verslaan.<br>Combineer verschillende elementaire aanvallen om tegenslagen te overwinnen en door obstakels heen te breken waar je niet op een andere manier doorheen komt.<br>Maak verschillende voorwerpen en gadgets om de ontelbare dreigingen op deze exoplaneet het hoofd te bieden.<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1196090/extras/4fc7d95b1118e4175427803a4270e2fe.poster.avif?t=1681942670"></span><h2 class="bb_tag">VERKEN EEN MYSTERIEUZE EXOPLANEET </h2>Dompel jezelf onder in een zorgvuldig ontwikkeld avontuur, geïnspireerd op de scifi-klassiekers.<br>Verken een buitenaardse wereld met talloze dreigingen, prachtige landschappen en ruïnes die duiden op een eeuwenoude, geavanceerde en om onbekende redenen verdwenen beschaving.<br>Reis door de verschillende biomen, zoals moeraslanden, ijskoude woestenijen, ondergrondse grotten en buitenaardse bouwwerken – allemaal met hun eigen uitdagingen, vijanden, geheimen en omgevingsgevaren.<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1196090/extras/6a475434084cd18c17f3a3a9a9869046.poster.avif?t=1681942670"></span><h2 class="bb_tag">GA OP ONDERZOEKSREIS</h2> Kate is een wetenschapper in hart en nieren. Jij kunt haar wetenschappelijke expertise gebruiken om informatie te halen uit de omgeving door artefacten, materialen en wezens te scannen en zo meer te weten te komen over hun kenmerken, eigenschappen en zwakke punten.<br>Terwijl je de omgeving verkent, voer je analyses uit en vergaar je kennis waarmee je nieuwe gadgets en wapens kunt maken en vaardigheden kunt ontgrendelen in xenobiologische en technische vaardigheidsbomen.<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1196090/extras/0d0d394c8f76d7fce9468f6161739f47.poster.avif?t=1681942670"></span><h2 class="bb_tag">SPANNENDE EINDBAASGEVECHTEN</h2>IJzingwekkende vijanden met verschillende strategieën en tactieken zorgen dat ontmoetingen altijd weer anders zijn en dwingen je creatieve manieren te vinden om eindbazen te verslaan.<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1196090/extras/2dcc95b20b141725c0570baf2b30d598.poster.avif?t=1681942670"></span><h2 class="bb_tag">De Scars Above-ervaring:</h2><ul class="bb_ul"><li>  Dompel jezelf onder in een spannend scifi-avontuur geïnspireerd op de klassiekers in het genre<br></li><li>  Verken een mysterieuze en complexe buitenaardse wereld met talloze geheimen om te ontrafelen<br></li><li>  Vecht tactisch, gebruik een combinatie van elementaire aanvallen, gadgets en voorwerpen, maak gebruik van de omgeving en de zwakke punten van de vijand<br></li><li>  Ga de strijd aan met spannende en uitdagende vijanden en eindbazen, van gruwelijke met rotsen bedekte monsters tot afgrijselijke, in de duisternis loerende wezens<br></li><li>  Vergaar kennis en nieuwe vaardigheden<br></li><li>  Scan vijanden om hun zwakke punten en gedrag te leren kennen<br></li><li>  Gebruik je wetenschappelijke kennis om onderzoek te doen en informatie in te winnen</li></ul><br>Beschrijving content voor volwassenen<br>De ontwikkelaars beschrijven de content als volgt:<br>geweld, beelden van verminkte lichamen van mensen, beelden van dode en verminkte buitenaardse wezens.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
