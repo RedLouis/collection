@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Stellar Blade</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Stellar Blade</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>24m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-21-6-2025">21-6-2025</a> 1:03:36</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-7-11-2025">7-11-2025</a> 19:48:39</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-7-11-2025">7-11-2025</a> 19:58:50</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-26-4-2024">26-4-2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-86">86</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Hack and slash/Beat 'em up">Hack and slash/Beat 'em up</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-SHIFT UP">SHIFT UP</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Sony Interactive Entertainment">Sony Interactive Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.stellar-blade.com/" target="_blank">Official Website</a><br/><a href="https://twitter.com/stellarblade" target="_blank">Twitter</a><br/><a href="https://www.reddit.com/r/stellarblade/" target="_blank">Subreddit</a><br/><a href="https://en.wikipedia.org/wiki/Stellar_Blade" target="_blank">Wikipedia</a><br/><a href="https://store.steampowered.com/app/3489700/Stellar_Blade/" target="_blank">Steam</a><br/><a href="https://store.epicgames.com/en-US/p/stellar-blade-fa21c3" target="_blank">Epic</a><br/><a href="https://www.twitch.tv/directory/category/stellar-blade" target="_blank">Twitch</a><br/><a href="https://store.playstation.com/en-us/concept/10006891" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/872a2e0bcf9efc5716d4d8c4242025bf.webp?t=1760065361"></span></h2><p class="bb_paragraph">Ervaar de bejubelde PlayStation®5-hit Stellar Blade™ van de Koreaanse ontwikkelaar SHIFT UP. Nu geoptimaliseerd voor pc.</p><p class="bb_paragraph"></p><h2 class="bb_tag"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/c317f90bfff2178b78c57330f1c2f20c.webp?t=1760065361"></span></h2><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/6eb438ae996a475a048ab832123f7a8c.poster.avif?t=1760065361"></span></p><p class="bb_paragraph">De mensheid staat aan de rand van de afgrond en alleen vlijmscherpe actie kan haar van de ondergang redden. De aarde is verwoest door krachtige, kwaadaardige wezens. De mensheid is gedecimeerd en de overlevenden zijn gevlucht naar een kolonie in de ruimte.</p><p class="bb_paragraph"></p><p class="bb_paragraph">EVE reist van de kolonie naar de troosteloze overblijfselen van onze planeet met één missie: ze moet de aarde heroveren op de Naytiba s, de wezens die verantwoordelijk zijn voor de totale vernietiging ervan. Alleen zo kan de toekomst van de mensheid worden veiliggesteld.</p><p class="bb_paragraph"></p><p class="bb_paragraph">EVE gaat het gevecht aan met de Naytibas en verkent de overblijfselen van de menselijke beschaving in een poging het mysterieuze verleden te ontrafelen. Al snel komt ze erachter dat haar missie allesbehalve makkelijk zal zijn. Uiteindelijk blijkt niets te zijn wat het lijkt...</p><p class="bb_paragraph"></p><h2 class="bb_tag"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/90431d17c0cae27c6c0ee64cbe3429a7.webp?t=1760065361"></span></h2><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/8097adf35cdfbe7b7c3b746f2693840e.poster.avif?t=1760065361"></span></p><p class="bb_paragraph">Stort je in verbluffend snelle gevechtsactie en hak je een weg door de ruïnes van de maatschappij. Maak gebruik van sierlijke en dodelijke combo's, ontgrendel nieuwe vechttechnieken en wapen-upgrades. Neem het op tegen vijanden in epische eindgevechten die het uiterste vergen van je vechtskills en strategische vaardigheden.</p><p class="bb_paragraph"></p><h2 class="bb_tag"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/ca520201c9f3b74680b598c1fd5e8c62.webp?t=1760065361"></span></h2><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/1d8bf487cb63cd517950a9044ab897bf.poster.avif?t=1760065361"></span></p><p class="bb_paragraph">Ervaar een spectaculair vormgegeven postapocalyptische wereld waarin pracht en horror naadloos in elkaar overvloeien. </p><p class="bb_paragraph"></p><h2 class="bb_tag"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/6e958231911c6d8181b121c00c28342d.webp?t=1760065361"></span></h2><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3489700/extras/9a881bdac27f5f957e2b9604b67c4ede.poster.avif?t=1760065361"></span></p><p class="bb_paragraph">Ontrafel een aangrijpend verhaal over het lot van de mensheid, met diepere betekenissen en emotionele ontwikkelingen van begin tot eind.</p><p class="bb_paragraph"></p><p class="bb_paragraph"></p><h2 class="bb_tag"><strong>Nieuwe content</strong></h2><ul class="bb_ul"><li><p class="bb_paragraph">Test je skills en kracht in het speltype Baasuitdaging en neem het op tegen de angstaanjagende krijger Mann, leider van de Sentinels.</p></li><li><p class="bb_paragraph">Stemmen en lipsync beschikbaar in het Chinees en Japans.</p></li><li><p class="bb_paragraph">‎25 outfits, drie brillen en zes paar oorbellen.‎</p></li></ul><p class="bb_paragraph"></p><h2 class="bb_tag"><strong>Kenmerken pc-versie</strong></h2><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Ondersteuning van ultrawide-monitor</strong></p><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph">Verken prachtige omgevingen die zijn geïnspireerd op populaire sciencefiction in adembenemende ultrawide-weergave, met beeldverhoudingen van 21:9 en 32:9.</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Geoptimaliseerde graphics voor pc</strong></p><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph">De zinnenstrelende en levendige wereld komt verbluffend tot leven dankzij ondersteuning van geavanceerde technologieën. Geniet van de AI-graphics van NVIDIA DLSS 4, verbeterde beeldkwaliteit van NVIDIA DLAA, latency-vermindering van NVIDIA Reflex, en upscalingtechnieken van AMD FSR 3.</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Ontgrendelde framerates</strong></p><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph">Maak maximaal gebruik van de mogelijkheden van je hardware en haal alles uit EVE's energieke vechtstijl met de ondersteuning van hoge framerates en verbeterde vloeiende visuals.</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Ondersteuning van texture-pakketten</strong></p><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph">Maak het Stellar Blade-universum nog mooier met een 4K-optie voor texture-kwaliteit van omgevingen.‎</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Ondersteuning van controller en toetsenbord</strong></p><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph">Beleef je avontuur met een PlayStation DualSense®-controller via een bedrade USB-verbinding of speel de game met muis en toetsenbord.</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"><u>Haptische feedback</u></p><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph">Voel de intensiteit van de strijd in je handen dankzij de responsieve trilfunctie van de DualSense-controller en vecht je een weg naar de overwinning.</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"><u>Adaptieve triggers</u></p><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph">Maak gebruik van sierlijke en dodelijke combo's en zet achtergebleven technologieën van de verlaten aarde in met de adaptieve triggers van de DualSense-controller.</p></li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
